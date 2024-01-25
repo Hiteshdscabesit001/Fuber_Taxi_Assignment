@@ -1,0 +1,24 @@
+CREATE TABLE User (
+    UserID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Email VARCHAR(255),
+    PhoneNo VARCHAR(15)
+);
+
+CREATE TABLE Event (
+    EventID INT PRIMARY KEY,
+    Title VARCHAR(255),
+    StartDate DATE,
+    EndDate DATE,
+    Status VARCHAR(20)
+);
+
+CREATE TABLE Invitation (
+    InvitationID INT PRIMARY KEY,
+    GuestUserID INT,
+    EventID INT,
+    InvitationStatus VARCHAR(20),
+    InvitationDate DATE,
+    FOREIGN KEY (GuestUserID) REFERENCES User(UserID),
+    FOREIGN KEY (EventID) REFERENCES Event(EventID)
+);
